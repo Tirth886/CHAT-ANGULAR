@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="icon" href="https://www.livechatinc.com/wp-content/themes/livechat2.0/media/img/press/lc-logos/logo-livechat.png" sizes="16x16">
+	<title>Chat Application</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/w3.css">
+	<link rel="stylesheet" type="text/css" href="css/custom.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-route.js"></script>
+	<script type="text/javascript" src="js/angular-sanitize.js"></script>
+	<script type="text/javascript" src="http://127.0.0.1:88/socket.io/socket.io.js"></script>
+</head>
+<body ng-app = "myApp">
+	
+	<!-- All Page Route On This <div>..</div> !-->
+	<div ng-view id="maincontent"></div>
+	<!-- <input type="text" name="name" ng-model = "name">{{name}} -->
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/popper.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/controller.js"></script>
+
+</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(function(){
+		// alert("hello");
+		// setInterval(function(){document.location.reload(true);},1000);
+		$(document).on('click','.list-group-item',function(){
+			// console.log("hello");
+			var friendname = $(this).data('name').split(" ")[2];
+			$("#setname").html(friendname);
+			$(".open_close").toggle();
+		});
+	});
+</script>

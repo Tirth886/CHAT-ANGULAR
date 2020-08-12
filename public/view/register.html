@@ -1,0 +1,54 @@
+<center><div style="padding: 25px;">
+ 	<label style="color: green;" ng-bind = "status"></label>
+	<form method="post" name="frm" novalidate>
+		<table border="1">
+		<tr>
+			<td style="padding: 10px;"><label for="username">Username</label></td>
+			<td style="padding: 10px;">	
+				<input type="text" ng-model = "username" pattern="[a-zA-Z ]*" name="username" id="username" required>
+				<br>
+				<span style = "color:red">
+                    <span ng-show = "(frm.username.$error.required && frm.username.$dirty)">Name is required.</span>
+                    <span ng-bind = "nerr"></span>
+                    <span ng-show = "frm.username.$dirty && frm.username.$error.pattern">Invalid.</span>
+	             </span>	
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 10px;"><label for="email">E-mail</label></td>
+			<td style="padding: 10px;">	
+				<input type="text" ng-model = "email" name="email" id="email" pattern="[a-zA-Z0-9.]+@+(gmail|yahoo|rediffmail|GMAIL|YAHOO|REDIFFMAIL|Gmail|Yahoo|Rediffmail)+\.(com)" required>
+				<br>
+				<span style = "color:red">
+                    <span ng-show = "(frm.email.$error.required && frm.email.$dirty)">Email is required.</span>
+                    <span ng-bind = "eerr"></span>
+				    <span ng-bind = "isExist"></span>
+                    <span ng-show = "frm.email.$dirty && frm.email.$error.pattern">Invalid.</span>
+	             </span>	
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 10px;"><label for="password">Password</label></td>
+			<td style="padding: 10px;">
+				<input type="password" name="password" ng-model = "password" id="password" required>
+				<br>
+				<span style = "color:red">
+                    <span ng-show = "(frm.password.$error.required && frm.password.$dirty)">Password is required.</span>
+                    <span ng-bind = "perr"></span>
+	             </span>	
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center" style="padding: 10px;">
+				<button type="button" name="register" ng-disabled = "frm.$invalid || nerr || eerr || perr" id="register" ng-click = "register();">Register</button>
+			</td>
+		</tr>
+		<tr style="background: lightblue;color: white;padding: 1px;">
+			<td colspan="2" align="center">
+				<a href="#!/login">Login</a>
+				<a href="/">Home</a>
+			</td>
+		</tr>			
+		</table>
+	</form>
+</div></center>

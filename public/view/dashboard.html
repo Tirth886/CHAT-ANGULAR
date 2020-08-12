@@ -1,0 +1,76 @@
+<form name="frm" method="post">
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <label class="navbar-brand" href="#" ng-bind-html = "user"></label>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul
+            class="navbar-nav mr-auto">
+            <li class="nav-item"> <label class="nav-link"
+               ng-bind-html = "email"></label> </li>
+         </ul>
+         <div class="form-inline my-2
+            my-lg-0"> <a href="#!/logout" class="btn btn-outline-danger my-2
+            my-sm-0">Logout</a> </div>
+      </div>
+   </nav>
+   </div> <br> 
+   <h1 align="center" ng-bind-html = "totalFriends"></h1>
+   <div class="row" style="padding: 30px;">
+      <div class="col-md-6">
+         <div class="form-group has-search"> 
+            <span class="fa fa-search form-control-feedback"></span> 
+            <input type="text" class="form-control" ng-model = "search" placeholder="Search Your Friend">
+         </div>
+         <ul class="list-group" ng-init = "getFriends(id)" id="apndtest">
+            <li
+               class="list-group-item" ng-repeat = "x in myFriends | filter : search as result" data-id = "{{x.friendid}}" data-name = "{{x.friendname}}" ng-click =
+               "change(x.friendid, x.friendname);" style="cursor: pointer;">
+               <!-- sending
+                  value to outside the ng-repeat block using userdefined change function-->
+               <span class="pull-right"> <i class="fa fa-angle-right"></i> </span> <span
+                  class="pull-left" ng-bind-html = "x.friendname">	 </span> 
+            </li>
+         </ul>
+         <ul class="list-group" ng-if = "result.length===0 || err">
+            <li class="list-group-item" ng-bind-html = "messageno" style="color: rgba(255, 163, 163, 0.87);"></li>
+         </ul>
+      </div>
+      <div class="col-md-6">
+         <div class="open_close" id = "openblock">
+            <div style="border: 1px solid #cccccc;background: #f8f9fa;padding: 10px;" id="setname"></div>
+            <div style="border: 1px solid #cccccc;height: 250px;overflow: auto;" id="join">
+               <div class="mesgs">
+                  <!-- <input type="hidden" ng-model = "msginfo"> --> 
+                  <center><img src="img/dJF1Ey53IvdlK_fTxdofg35kdbg2PNYXETBlulPKxFk.jpg" height="200" width="400" ng-if = "!isStatus"></center>
+                  <div class="msg_history" ng-repeat = "x in mymessage">
+                     <div class="outgoing_msg" ng-if = "x.myisStatus && isStatus">
+                        <div class="sent_msg">
+                           <!-- sender message!--> 
+                           <p ng-bind-html = "x.mymessage"></p>
+                           <!-- sender Time!--> 
+                           <span class="time_date" ng-bind-html = "x.timestamp"></span> 
+                        </div>
+                     </div>
+                     <div class="received_msg" ng-if = "x.risStatus && isStatus">
+                        <div class="received_withd_msg">
+                           <!-- received message!--> 
+                           <p ng-bind-html = "x.remessage"></p>
+                           <!-- received time!--> 	 
+                           <span class="time_date" ng-bind-html = "x.rtimestamp"></span> 
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <textarea placeholder="Type message.."
+               style="background: #f8f9fa;border-color: #cccccc;resize: none;border-radius:
+               0;padding: 15px;width: 100%;outline: none;" rows="2.5" ng-model =
+               "message"></textarea>
+            <!-- value comeing from outside the ng-repeat block
+               using userdefined change function --> <input type="hidden" ng-model =
+               "saveinfo">  
+            <div id="sendBox"> <i class="fa fa-paper-plane" ng-click =
+               "sendmsg(saveinfo);"></i> </div>
+         </div>
+      </div>
+   </div>
+</form>
